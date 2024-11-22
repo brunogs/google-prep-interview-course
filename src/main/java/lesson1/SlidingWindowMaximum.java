@@ -3,8 +3,10 @@ package lesson1;
 import precondition.Preconditions;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 import static precondition.Preconditions.check;
 
@@ -24,6 +26,14 @@ public class SlidingWindowMaximum {
         result = bruteForce(nums, k);
         check(Arrays.equals(result, new int[]{3, 3, 5, 5, 6, 7}));
         System.out.println(Arrays.toString(result));
+
+        result = heap(nums, k);
+        check(Arrays.equals(result, new int[]{3, 3, 5, 5, 6, 7}));
+        System.out.println(Arrays.toString(result));
+
+        int[] heapnums = {9,10,9,-7,-4,-8,2,-6};
+        int[] heapresult = heap(heapnums, 5);
+        System.out.println(Arrays.toString(heapresult));
     }
 
     // O (n)
@@ -43,6 +53,28 @@ public class SlidingWindowMaximum {
 
             if (i >= k-1) {
                 out[outIndex] = nums[deque.peekFirst()];
+                outIndex++;
+            }
+        }
+        return out;
+    }
+
+    // O (n)
+    public static int[] heap(int[] nums, int k) {
+        int[] out = new int[nums.length - k + 1];
+        // comparing greater to lower
+        PriorityQueue<Integer> heap = new PriorityQueue<>(k, (i, j) -> Integer.compare(nums[j], nums[i]));
+        int outIndex = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            heap.add(i);
+
+            while (heap.peek() < i - k + 1) {
+                heap.poll();
+            }
+
+            if (i >= k-1) {
+                out[outIndex] = nums[heap.peek()];
                 outIndex++;
             }
         }

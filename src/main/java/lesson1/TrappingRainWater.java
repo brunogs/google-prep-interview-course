@@ -5,6 +5,12 @@ import java.util.LinkedList;
 
 import static precondition.Preconditions.check;
 
+/**
+ * Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ * Example:
+ *
+ * <img src="./examples/trapping_water.png"/>
+ */
 public class TrappingRainWater {
 
     public static void main(String[] args) {

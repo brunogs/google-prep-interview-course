@@ -1,9 +1,6 @@
 package lesson1;
 
-import precondition.Preconditions;
-
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -59,7 +56,7 @@ public class SlidingWindowMaximum {
         return out;
     }
 
-    // O (n)
+    // O (n logn)
     public static int[] heap(int[] nums, int k) {
         int[] out = new int[nums.length - k + 1];
         // comparing greater to lower

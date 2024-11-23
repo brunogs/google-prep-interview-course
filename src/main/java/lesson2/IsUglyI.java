@@ -1,5 +1,11 @@
 package lesson2;
 
+/**
+ * An ugly number is a positive integer which does not have a prime factor other than 2, 3, and 5.
+ *
+ * Given an integer n, return true if n is an ugly number.
+ * https://leetcode.com/problems/ugly-number/description/
+ */
 public class IsUglyI {
 
     public static void main(String[] args) {

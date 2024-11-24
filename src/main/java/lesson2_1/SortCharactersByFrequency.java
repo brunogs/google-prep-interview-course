@@ -1,5 +1,6 @@
 package lesson2_1;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -31,6 +32,8 @@ public class SortCharactersByFrequency {
         for (char it : s.toCharArray()) {
             lettersByChar.compute(it, (k, v) -> (v == null) ? it+"" : v + "" + it);
         }
+
+
 
         heap.addAll(lettersByChar.keySet());
 

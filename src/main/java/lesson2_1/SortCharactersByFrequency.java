@@ -24,7 +24,7 @@ public class SortCharactersByFrequency {
 
         Map<Character, String> lettersByChar = new HashMap<>();
 
-        PriorityQueue<Character> heap = new PriorityQueue(
+        PriorityQueue<Character> heap = new PriorityQueue<>(
                 s.length(),
                 (i, j) -> Integer.compare(lettersByChar.getOrDefault(j, "").length(), lettersByChar.getOrDefault(i, "").length())
         );
@@ -32,8 +32,6 @@ public class SortCharactersByFrequency {
         for (char it : s.toCharArray()) {
             lettersByChar.compute(it, (k, v) -> (v == null) ? it+"" : v + "" + it);
         }
-
-
 
         heap.addAll(lettersByChar.keySet());
 

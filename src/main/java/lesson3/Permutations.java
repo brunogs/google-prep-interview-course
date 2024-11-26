@@ -1,7 +1,9 @@
 package lesson3;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Given an array nums of distinct integers, return all the possible
@@ -35,6 +37,7 @@ public class Permutations {
     public static void permuteAux(int[] nums, List<Integer> partial, List<List<Integer>> result, boolean[] used) {
         if (partial.size() == nums.length) {
             result.add(List.copyOf(partial));
+
             return;
         }
 

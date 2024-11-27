@@ -10,7 +10,8 @@ public class Combinations {
         int k = 2;
         var result = combine(n, k);
 
-        System.out.println(result);
+
+        result.forEach(System.out::println);
     }
 
     public static void combineAux(int start, int n, int k, List<Integer> partial, List<List<Integer>> result) {
@@ -20,7 +21,7 @@ public class Combinations {
         }
 
         for (int i = start; i <= n; i++) {
-            if ((partial.isEmpty() || partial.get(partial.size()-1) < i)) {
+            if ((partial.isEmpty() || partial.getLast() < i)) {
                 partial.add(i);
                 combineAux(start+1, n, k, partial, result);
                 partial.remove((Integer)i);

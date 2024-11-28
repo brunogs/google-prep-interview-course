@@ -9,8 +9,29 @@ public class FindTownJudge {
 
     public static void main(String[] args) {
         int[][] graph = {{1,3},{2,3}};
-        int result = findJudge(3, graph);
+        int result = findJudgeSmartApproach(3, graph);
         System.out.println(result);
+    }
+
+    public static int findJudgeSmartApproach(int n, int[][] trust) {
+        if (n == 1 && trust.length == 0) return 1; // Caso trivial: apenas uma pessoa
+
+        int[] inDegree = new int[n + 1];
+        int[] outDegree = new int[n + 1];
+
+        for (int[] t : trust) {
+            int from = t[0];
+            int target = t[1];
+            outDegree[from]++;
+            inDegree[target]++;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            if (inDegree[i] == n - 1 && outDegree[i] == 0) {
+                return i; // Encontrou o juiz
+            }
+        }
+        return -1;
     }
 
     public static int findJudge(int n, int[][] trust) {

@@ -16,8 +16,6 @@ public class Matrix01 {
     }
 
     public static int[][] updateMatrix(int[][] mat) {
-        boolean[][] visited = new boolean[mat.length][mat[0].length];
-
         /*
         [
          0   [0,0,0],
@@ -52,7 +50,6 @@ public class Matrix01 {
                 int[] position = queue.poll();
                 int x = position[0]; //2
                 int y = position[1]; //0
-
                 if (mat[x][y] == 0) {
                     System.out.println(count + " position " + x + ", " + y + " = " + mat[x][y]);
                     return Math.max(0, count-1);

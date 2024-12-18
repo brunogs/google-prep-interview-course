@@ -1,8 +1,10 @@
 package lesson10;
 
+import java.util.Arrays;
+
 public class RedundantConnection {
 
-    class DisjointSets {
+    static class DisjointSets {
         private int[] dj;
 
         public DisjointSets(int size) {
@@ -24,7 +26,15 @@ public class RedundantConnection {
         }
     }
 
-    public int[] findRedundantConnection(int[][] edges) {
+    public static void main(String[] args) {
+        int[][] edges = {{1,2},{2,3},{3,4},{1,4},{1,5}};
+
+        int[] result = findRedundantConnection(edges);
+
+        System.out.println(Arrays.toString(result));
+    }
+
+    public static int[] findRedundantConnection(int[][] edges) {
         int n = edges.length;
         DisjointSets ds = new DisjointSets(n + 1); // `n+1` porque os nós começam de 1, não 0.
 

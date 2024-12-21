@@ -9,13 +9,17 @@ public class CombinationSum {
 
     private Set<List<Integer>> combinations = new HashSet<>();
 
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    /*
+    this approach is bad because i'm using extra memory to check unique combinations, and in order to have sure it's unique I'm also sorting the combination
+    it means more O(N) of memory and extra O(nlogn) for each iteration
+     */
+    public List<List<Integer>> combinationSumBruteForce(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        backtracking(candidates, target, result, new ArrayList<>());
+        backtrackingBruteForce(candidates, target, result, new ArrayList<>());
         return result;
     }
 
-    public void backtracking(int[] candidates, int target, List<List<Integer>> result, List<Integer> partial) {
+    public void backtrackingBruteForce(int[] candidates, int target, List<List<Integer>> result, List<Integer> partial) {
         if (combinations.contains(partial)) {
             return;
         }
@@ -34,7 +38,7 @@ public class CombinationSum {
         }
         for (int i = 0; i < candidates.length; i++) {
             partial.add(candidates[i]);
-            backtracking(candidates, target, result, partial);
+            backtrackingBruteForce(candidates, target, result, partial);
             partial.remove(partial.size()-1);
         }
     }

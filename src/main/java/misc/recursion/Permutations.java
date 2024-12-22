@@ -1,6 +1,8 @@
-package recursion;
+package misc.recursion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Permutations {
@@ -17,6 +19,8 @@ public class Permutations {
             result.add(List.copyOf(partial));
             return;
         }
+        int[][] test = new int[nums.length][nums.length];
+        Arrays.sort(test, Comparator.comparingInt(a -> a[0]));
         for (int i = 0; i < nums.length; i++) {
             if (distinct[i]) {
                 continue;
